@@ -1,0 +1,61 @@
+﻿<Window
+    x:Class="EC2Remocon.Views.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:prism="http://prismlibrary.com/"
+    Title="{Binding Title}"
+    Width="400"
+    Height="400"
+    prism:ViewModelLocator.AutoWireViewModel="True">
+    <Window.Resources>
+        <SolidColorBrush x:Key="DarkBackgroundColorBrush" Color="#222233" />
+        <SolidColorBrush x:Key="LightForegroundColorBrush" Color="WhiteSmoke" />
+
+    </Window.Resources>
+    <Grid Background="{StaticResource DarkBackgroundColorBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            <StackPanel.Resources>
+
+                <Style TargetType="{x:Type Button}">
+                    <Style.Setters>
+                        <Setter Property="Margin" Value="5" />
+                        <Setter Property="Padding" Value="5" />
+                    </Style.Setters>
+                </Style>
+
+            </StackPanel.Resources>
+
+            <Button Grid.Column="0" Content="起動" />
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" Content="状態取得" />
+                <Button Grid.Column="1" Content="停止" />
+
+            </Grid>
+
+        </StackPanel>
+
+        <Border
+            Grid.Row="1"
+            Margin="5"
+            Padding="3,0"
+            BorderBrush="Gray"
+            BorderThickness="1">
+
+            <TextBlock Foreground="{StaticResource LightForegroundColorBrush}" Text="LogMessage" />
+
+        </Border>
+
+        <ContentControl prism:RegionManager.RegionName="ContentRegion" />
+    </Grid>
+</Window>
