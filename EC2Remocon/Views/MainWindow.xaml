@@ -8,8 +8,17 @@
     Height="400"
     prism:ViewModelLocator.AutoWireViewModel="True">
     <Window.Resources>
-        <SolidColorBrush x:Key="DarkBackgroundColorBrush" Color="#222233" />
-        <SolidColorBrush x:Key="LightForegroundColorBrush" Color="WhiteSmoke" />
+
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="UIResourceDictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <SolidColorBrush x:Key="DarkBackgroundColorBrush" Color="#222233" />
+            <SolidColorBrush x:Key="LightForegroundColorBrush" Color="WhiteSmoke" />
+
+        </ResourceDictionary>
 
     </Window.Resources>
     <Grid Background="{StaticResource DarkBackgroundColorBrush}">
@@ -55,16 +64,20 @@
 
         </StackPanel>
 
-        <Border
+        <ScrollViewer
             Grid.Row="1"
             Margin="5"
             Padding="3,0"
             BorderBrush="Gray"
-            BorderThickness="1">
+            BorderThickness="1"
+            HorizontalScrollBarVisibility="Visible">
 
-            <TextBlock Foreground="{StaticResource LightForegroundColorBrush}" Text="{Binding Log}" />
+            <Border>
 
-        </Border>
+                <TextBlock Foreground="{StaticResource LightForegroundColorBrush}" Text="{Binding Log}" />
+
+            </Border>
+        </ScrollViewer>
 
         <ContentControl prism:RegionManager.RegionName="ContentRegion" />
     </Grid>
