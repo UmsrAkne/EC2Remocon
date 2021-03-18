@@ -62,7 +62,7 @@
             BorderBrush="Gray"
             BorderThickness="1">
 
-            <TextBlock Foreground="{StaticResource LightForegroundColorBrush}" Text="LogMessage" />
+            <TextBlock Foreground="{StaticResource LightForegroundColorBrush}" Text="{Binding Log}" />
 
         </Border>
 
