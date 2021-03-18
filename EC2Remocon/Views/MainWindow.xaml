@@ -30,7 +30,10 @@
 
             </StackPanel.Resources>
 
-            <Button Grid.Column="0" Content="起動" />
+            <Button
+                Grid.Column="0"
+                Command="{Binding StartEC2InstanceCommand}"
+                Content="起動" />
 
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -38,8 +41,15 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
-                <Button Grid.Column="0" Content="状態取得" />
-                <Button Grid.Column="1" Content="停止" />
+                <Button
+                    Grid.Column="0"
+                    Command="{Binding GetEC2InstanceStatusCommand}"
+                    Content="状態取得" />
+
+                <Button
+                    Grid.Column="1"
+                    Command="{Binding StopEC2InstanceCommand}"
+                    Content="停止" />
 
             </Grid>
 
