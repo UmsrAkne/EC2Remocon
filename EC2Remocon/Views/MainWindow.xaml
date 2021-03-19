@@ -8,8 +8,15 @@
     Height="400"
     prism:ViewModelLocator.AutoWireViewModel="True">
     <Window.Resources>
-        <SolidColorBrush x:Key="DarkBackgroundColorBrush" Color="#222233" />
-        <SolidColorBrush x:Key="LightForegroundColorBrush" Color="WhiteSmoke" />
+
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="UIResourceDictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+
+        </ResourceDictionary>
 
     </Window.Resources>
     <Grid Background="{StaticResource DarkBackgroundColorBrush}">
@@ -30,7 +37,10 @@
 
             </StackPanel.Resources>
 
-            <Button Grid.Column="0" Content="起動" />
+            <Button
+                Grid.Column="0"
+                Command="{Binding StartEC2InstanceCommand}"
+                Content="起動" />
 
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -38,23 +48,34 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
-                <Button Grid.Column="0" Content="状態取得" />
-                <Button Grid.Column="1" Content="停止" />
+                <Button
+                    Grid.Column="0"
+                    Command="{Binding GetEC2InstanceStatusCommand}"
+                    Content="状態取得" />
+
+                <Button
+                    Grid.Column="1"
+                    Command="{Binding StopEC2InstanceCommand}"
+                    Content="停止" />
 
             </Grid>
 
         </StackPanel>
 
-        <Border
+        <ScrollViewer
             Grid.Row="1"
             Margin="5"
             Padding="3,0"
             BorderBrush="Gray"
-            BorderThickness="1">
+            BorderThickness="1"
+            HorizontalScrollBarVisibility="Visible">
 
-            <TextBlock Foreground="{StaticResource LightForegroundColorBrush}" Text="LogMessage" />
+            <Border>
 
-        </Border>
+                <TextBlock Foreground="{StaticResource LightForegroundColorBrush}" Text="{Binding Log}" />
+
+            </Border>
+        </ScrollViewer>
 
         <ContentControl prism:RegionManager.RegionName="ContentRegion" />
     </Grid>
