@@ -88,21 +88,32 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
 
-                    <Border>
-                        <StackPanel Orientation="Horizontal">
-                            <StackPanel.Resources>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="Foreground" Value="{StaticResource LightForegroundColorBrush}" />
-                                    <Setter Property="Margin" Value="3,0" />
-                                </Style>
-                            </StackPanel.Resources>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel.Resources>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Foreground" Value="{StaticResource LightForegroundColorBrush}" />
+                                <Setter Property="Width" Value="80" />
+                                <Setter Property="TextAlignment" Value="Center" />
+                            </Style>
+                        </StackPanel.Resources>
 
-                            <TextBlock Text="{Binding DateTime, Converter={StaticResource DateTimeConverter}}" />
-                            <TextBlock Text="{Binding Operation}" />
-                            <TextBlock Text="{Binding Status}" />
+                        <TextBlock Width="120" Text="{Binding DateTime, Converter={StaticResource DateTimeConverter}}" />
 
-                        </StackPanel>
-                    </Border>
+                        <Border
+                            Width="1"
+                            Margin="5,0"
+                            Background="{StaticResource LightForegroundColorBrush}" />
+
+                        <TextBlock Text="{Binding Operation}" />
+
+                        <Border
+                            Width="1"
+                            Margin="5,0"
+                            Background="{StaticResource LightForegroundColorBrush}" />
+
+                        <TextBlock Text="{Binding Status}" />
+
+                    </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
