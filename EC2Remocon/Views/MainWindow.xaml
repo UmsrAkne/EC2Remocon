@@ -15,8 +15,6 @@
                 <ResourceDictionary Source="UIResourceDictionary.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <SolidColorBrush x:Key="DarkBackgroundColorBrush" Color="#222233" />
-            <SolidColorBrush x:Key="LightForegroundColorBrush" Color="WhiteSmoke" />
 
         </ResourceDictionary>
 
