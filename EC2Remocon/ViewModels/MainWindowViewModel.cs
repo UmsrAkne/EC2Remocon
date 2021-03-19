@@ -2,6 +2,7 @@
 using System;
 using EC2Remocon.Models;
 using Prism.Commands;
+using System.Collections.ObjectModel;
 
 namespace EC2Remocon.ViewModels
 {
@@ -20,10 +21,12 @@ namespace EC2Remocon.ViewModels
             set => SetProperty(ref output, value);
         }
 
+        public ObservableCollection<Log> Log { get; private set; } = new ObservableCollection<Log>();
+
         private CLICommand CLICommand { get; } = new CLICommand();
 
         public MainWindowViewModel() {
-
+            Log.Add(new Log(Models.Log.EC2InstanceOperation.other, "init"));
         }
 
 

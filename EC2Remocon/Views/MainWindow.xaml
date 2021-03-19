@@ -78,7 +78,32 @@
             </Border>
         </ScrollViewer>
 
-        <ListView Grid.Row="2" Background="{StaticResource DarkBackgroundColorBrush}" />
+        <ListView
+            Grid.Row="2"
+            Background="{StaticResource DarkBackgroundColorBrush}"
+            BorderThickness="0"
+            ItemsSource="{Binding Log}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+
+                    <Border>
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel.Resources>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Foreground" Value="{StaticResource LightForegroundColorBrush}" />
+                                    <Setter Property="Margin" Value="3,0" />
+                                </Style>
+                            </StackPanel.Resources>
+
+                            <TextBlock Text="{Binding DateTime}" />
+                            <TextBlock Text="{Binding Operation}" />
+                            <TextBlock Text="{Binding Status}" />
+
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
         <ContentControl prism:RegionManager.RegionName="ContentRegion" />
 

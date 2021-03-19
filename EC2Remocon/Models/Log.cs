@@ -21,7 +21,8 @@ namespace EC2Remocon.Models {
         public enum EC2InstanceOperation {
             start,
             stop,
-            statusCheck
+            statusCheck,
+            other
         }
     }
 }
