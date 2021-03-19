@@ -23,6 +23,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition />
+            <RowDefinition />
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0">
@@ -77,6 +78,9 @@
             </Border>
         </ScrollViewer>
 
+        <ListView Grid.Row="2" Background="{StaticResource DarkBackgroundColorBrush}" />
+
         <ContentControl prism:RegionManager.RegionName="ContentRegion" />
+
     </Grid>
 </Window>
