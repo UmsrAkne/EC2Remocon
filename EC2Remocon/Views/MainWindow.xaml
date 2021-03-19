@@ -2,6 +2,7 @@
     x:Class="EC2Remocon.Views.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:models="clr-namespace:EC2Remocon.Models"
     xmlns:prism="http://prismlibrary.com/"
     Title="{Binding Title}"
     Width="400"
@@ -15,6 +16,7 @@
                 <ResourceDictionary Source="UIResourceDictionary.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
+            <models:DateTimeConverter x:Key="DateTimeConverter" />
 
         </ResourceDictionary>
 
@@ -95,7 +97,7 @@
                                 </Style>
                             </StackPanel.Resources>
 
-                            <TextBlock Text="{Binding DateTime}" />
+                            <TextBlock Text="{Binding DateTime, Converter={StaticResource DateTimeConverter}}" />
                             <TextBlock Text="{Binding Operation}" />
                             <TextBlock Text="{Binding Status}" />
 
