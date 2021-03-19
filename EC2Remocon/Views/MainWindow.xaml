@@ -72,7 +72,7 @@
 
             <Border>
 
-                <TextBlock Foreground="{StaticResource LightForegroundColorBrush}" Text="{Binding Log}" />
+                <TextBlock Foreground="{StaticResource LightForegroundColorBrush}" Text="{Binding Output}" />
 
             </Border>
         </ScrollViewer>
