@@ -39,13 +39,17 @@ namespace EC2Remocon.ViewModels
                 autoStatusCheckCounter++;
                 if(autoStatusCheckCounter >= autoStatusCheckInterval.Minutes) {
                     autoStatusCheckCounter = 0;
-                    GetEC2InstanceStatusCommand.Execute();
+                    addLog(Models.Log.EC2InstanceOperation.autoStatusCheck, CLICommand.getEC2InstanceStatus());
                 }
             };
 
             timer.Start();
         }
 
+        private void addLog(Log.EC2InstanceOperation operation, String standardOutput) {
+            Output += Environment.NewLine + standardOutput;
+            Log.Add(new Log(operation, standardOutput));
+        }
 
         public DelegateCommand StartEC2InstanceCommand {
             #region
