@@ -54,9 +54,7 @@ namespace EC2Remocon.ViewModels
         public DelegateCommand StartEC2InstanceCommand {
             #region
             get => startEC2InstanceCommand ?? (startEC2InstanceCommand = new DelegateCommand(() => {
-                var stdOut = CLICommand.startEC2Instance();
-                Output += Environment.NewLine + stdOut;
-                Log.Add(new Log(Models.Log.EC2InstanceOperation.start, stdOut));
+                addLog(Models.Log.EC2InstanceOperation.start, CLICommand.startEC2Instance());
             }));
         }
         private DelegateCommand startEC2InstanceCommand;
@@ -66,9 +64,7 @@ namespace EC2Remocon.ViewModels
         public DelegateCommand StopEC2InstanceCommand {
             #region
             get => stopEC2InstanceCommand ?? (stopEC2InstanceCommand = new DelegateCommand(() => {
-                var stdOut = CLICommand.stopEC2Instance();
-                Output += Environment.NewLine + stdOut;
-                Log.Add(new Log(Models.Log.EC2InstanceOperation.stop, stdOut));
+                addLog(Models.Log.EC2InstanceOperation.stop, CLICommand.stopEC2Instance());
             }));
         }
         private DelegateCommand stopEC2InstanceCommand;
@@ -78,9 +74,7 @@ namespace EC2Remocon.ViewModels
         public DelegateCommand GetEC2InstanceStatusCommand {
             #region
             get => getEC2InstanceStatusCommand ?? (getEC2InstanceStatusCommand = new DelegateCommand(() => {
-                var stdOut = CLICommand.getEC2InstanceStatus();
-                Output += Environment.NewLine + stdOut;
-                Log.Add(new Log(Models.Log.EC2InstanceOperation.statusCheck, stdOut));
+                addLog(Models.Log.EC2InstanceOperation.statusCheck, CLICommand.getEC2InstanceStatus());
             }));
         }
         private DelegateCommand getEC2InstanceStatusCommand;
