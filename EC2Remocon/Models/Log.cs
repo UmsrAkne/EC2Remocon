@@ -26,6 +26,7 @@ namespace EC2Remocon.Models {
             start,
             stop,
             statusCheck,
+            autoStatusCheck,
             other
         }
     }
