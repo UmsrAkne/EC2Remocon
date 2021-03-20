@@ -3,6 +3,7 @@ using System;
 using EC2Remocon.Models;
 using Prism.Commands;
 using System.Collections.ObjectModel;
+using System.Windows.Threading;
 
 namespace EC2Remocon.ViewModels
 {
@@ -25,8 +26,24 @@ namespace EC2Remocon.ViewModels
 
         private CLICommand CLICommand { get; } = new CLICommand();
 
+        private int autoStatusCheckCounter = 0;
+        private TimeSpan autoStatusCheckInterval = new TimeSpan(0, 30, 0);
+        private DispatcherTimer timer = new DispatcherTimer();
+
         public MainWindowViewModel() {
             Log.Add(new Log(Models.Log.EC2InstanceOperation.other, "init"));
+            GetEC2InstanceStatusCommand.Execute();
+
+            timer.Interval = new TimeSpan(0, 1, 0);
+            timer.Tick += (sender, e) => {
+                autoStatusCheckCounter++;
+                if(autoStatusCheckCounter >= autoStatusCheckInterval.Minutes) {
+                    autoStatusCheckCounter = 0;
+                    GetEC2InstanceStatusCommand.Execute();
+                }
+            };
+
+            timer.Start();
         }
 
 
