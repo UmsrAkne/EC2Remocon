@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 namespace EC2Remocon.Models {
     public class CLICommand {
@@ -46,6 +47,10 @@ namespace EC2Remocon.Models {
             return startEC2Instance(getEC2InstanceId());
         }
 
+        public Task<string> startEC2InstanceAsync() {
+            return Task.Run(() => startEC2Instance());
+        }
+
         /// <summary>
         /// 指定した id の EC2インスタンスを停止します。
         /// 注意 : インスタンス終了（削除）ではなく一時停止コマンドを実行します。
@@ -66,6 +71,10 @@ namespace EC2Remocon.Models {
             return stopEC2Instance(getEC2InstanceId());
         }
 
+        public Task<string> stopEC2InstanceAsync() {
+            return Task.Run(() => stopEC2Instance());
+        }
+
         public string getEC2InstanceStatus() {
             return describeEC2Instance();
         }
@@ -74,6 +83,10 @@ namespace EC2Remocon.Models {
             process.StartInfo.Arguments = @"/c aws ec2 describe-instances";
             process.Start();
             return process.StandardOutput.ReadToEnd();
+        }
+
+        public Task<string> getEC2InstanceStatusAsync() {
+            return Task.Run(() => getEC2InstanceStatus());
         }
     }
 }
