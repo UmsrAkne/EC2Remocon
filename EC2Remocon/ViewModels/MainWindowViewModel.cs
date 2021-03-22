@@ -4,6 +4,7 @@ using EC2Remocon.Models;
 using Prism.Commands;
 using System.Collections.ObjectModel;
 using System.Windows.Threading;
+using System.Threading.Tasks;
 
 namespace EC2Remocon.ViewModels
 {
@@ -53,8 +54,8 @@ namespace EC2Remocon.ViewModels
 
         public DelegateCommand StartEC2InstanceCommand {
             #region
-            get => startEC2InstanceCommand ?? (startEC2InstanceCommand = new DelegateCommand(() => {
-                addLog(Models.Log.EC2InstanceOperation.start, CLICommand.startEC2Instance());
+            get => startEC2InstanceCommand ?? (startEC2InstanceCommand = new DelegateCommand(async() => {
+                addLog(Models.Log.EC2InstanceOperation.start, await CLICommand.startEC2InstanceAsync());
             }));
         }
         private DelegateCommand startEC2InstanceCommand;
@@ -63,8 +64,8 @@ namespace EC2Remocon.ViewModels
 
         public DelegateCommand StopEC2InstanceCommand {
             #region
-            get => stopEC2InstanceCommand ?? (stopEC2InstanceCommand = new DelegateCommand(() => {
-                addLog(Models.Log.EC2InstanceOperation.stop, CLICommand.stopEC2Instance());
+            get => stopEC2InstanceCommand ?? (stopEC2InstanceCommand = new DelegateCommand(async() => {
+                addLog(Models.Log.EC2InstanceOperation.stop, await CLICommand.stopEC2InstanceAsync());
             }));
         }
         private DelegateCommand stopEC2InstanceCommand;
@@ -73,13 +74,12 @@ namespace EC2Remocon.ViewModels
 
         public DelegateCommand GetEC2InstanceStatusCommand {
             #region
-            get => getEC2InstanceStatusCommand ?? (getEC2InstanceStatusCommand = new DelegateCommand(() => {
-                addLog(Models.Log.EC2InstanceOperation.statusCheck, CLICommand.getEC2InstanceStatus());
+            get => getEC2InstanceStatusCommand ?? (getEC2InstanceStatusCommand = new DelegateCommand(async() => {
+                addLog(Models.Log.EC2InstanceOperation.statusCheck, await CLICommand.getEC2InstanceStatusAsync());
             }));
         }
         private DelegateCommand getEC2InstanceStatusCommand;
         #endregion
-
 
     }
 }
