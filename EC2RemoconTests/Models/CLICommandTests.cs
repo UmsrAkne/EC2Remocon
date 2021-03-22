@@ -30,5 +30,10 @@ namespace EC2Remocon.Models.Tests {
         public void describeEC2InstanceTest() {
             System.Diagnostics.Debug.WriteLine(new CLICommand().describeEC2Instance());
         }
+
+        [TestMethod()]
+        public void getPublicIPAddressTest() {
+            System.Diagnostics.Debug.WriteLine(new CLICommand().getPublicIPAddress());
+        }
     }
 }
