@@ -88,5 +88,11 @@ namespace EC2Remocon.Models {
         public Task<string> getEC2InstanceStatusAsync() {
             return Task.Run(() => getEC2InstanceStatus());
         }
+
+        public string getPublicIPAddress() {
+            var regex = new Regex("\"PublicIpAddress\": \"(.*)\"", RegexOptions.IgnoreCase);
+            var match = regex.Match(describeEC2Instance());
+            return match.Success ? match.Groups[1].Value : "";
+        }
     }
 }
