@@ -16,10 +16,7 @@ namespace EC2Remocon.Models {
 
         public Log(EC2InstanceOperation operation, string status) {
             Operation = operation;
-
-            var regex = new Regex("\"State\": \"(.*)\"", RegexOptions.IgnoreCase);
-            var match = regex.Match(status);
-            Status = match.Groups[1].Value;
+            Status = status;
         }
 
         public enum EC2InstanceOperation {
