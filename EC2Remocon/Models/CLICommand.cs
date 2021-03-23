@@ -76,7 +76,12 @@ namespace EC2Remocon.Models {
         }
 
         public string getEC2InstanceStatus() {
-            return describeEC2Instance();
+            var regex = new Regex("\"Name\": \"(.*)\"", RegexOptions.IgnoreCase);
+            process.StartInfo.Arguments = @"/c aws ec2 describe-instances";
+            process.Start();
+
+            var match = regex.Match(process.StandardOutput.ReadToEnd());
+            return match.Groups[1].Value;
         }
 
         public string describeEC2Instance() {
