@@ -49,7 +49,9 @@ namespace EC2Remocon.ViewModels
 
         private void addLog(Log.EC2InstanceOperation operation, String standardOutput) {
             Output += Environment.NewLine + standardOutput;
-            Log.Add(new Log(operation, standardOutput));
+            var log = new Log(operation, standardOutput);
+            Log.Add(log);
+            Title = $"{log.Status} ( {log.DateTime.ToString("MM/dd HH:mm")} )";
         }
 
         public DelegateCommand StartEC2InstanceCommand {
